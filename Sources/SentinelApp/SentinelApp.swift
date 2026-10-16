@@ -16,6 +16,7 @@ struct SentinelApp: App {
             MenuBarView(monitor: monitor)
         } label: {
             Image(systemName: iconName)
+                .foregroundStyle(monitor.status == .alert ? .red : .primary)
         }
         .menuBarExtraStyle(.window)
     }
