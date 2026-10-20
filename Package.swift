@@ -11,7 +11,7 @@ let package = Package(
     targets: [
         .target(name: "SentinelCore"),
         .executableTarget(name: "SentinelApp", dependencies: ["SentinelCore"]),
-        // XCTest needs full Xcode — this assert runner works with CLT only
+        // XCTest needs full Xcode - this assert runner works with CLT only
         .executableTarget(name: "sentinel-test", dependencies: ["SentinelCore"]),
     ]
 )

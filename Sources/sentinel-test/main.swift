@@ -1,7 +1,7 @@
 import Foundation
 import SentinelCore
 
-// XCTest isn't available under CommandLineTools — this is a plain assert runner.
+// XCTest isn't available under CommandLineTools - this is a plain assert runner.
 // Run: swift run sentinel-test
 
 var failures = 0

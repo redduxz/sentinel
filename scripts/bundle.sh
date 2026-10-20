@@ -11,4 +11,4 @@ mkdir -p "$APP/Contents/MacOS"
 cp .build/release/sentinel "$APP/Contents/MacOS/Sentinel"
 cp Resources/Info.plist "$APP/Contents/Info.plist"
 
-echo "built $APP — run it or drag to /Applications"
+echo "built $APP - run it or drag to /Applications"

@@ -32,7 +32,7 @@ public struct Event: Identifiable, Sendable {
     }
 }
 
-/// Rolling view of the network the Mac is attached to — what the header card shows.
+/// Rolling view of the network the Mac is attached to - what the header card shows.
 public struct NetSnapshot: Sendable {
     public var ssid: String?
     public var bssid: String?

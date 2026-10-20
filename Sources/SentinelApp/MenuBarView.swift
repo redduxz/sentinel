@@ -83,7 +83,7 @@ struct MenuBarView: View {
             Divider().opacity(0.4)
             row("gateway", [s.gateway, s.gatewayMac].compactMap { $0 }.joined(separator: "  "))
             Divider().opacity(0.4)
-            row("dns", s.resolvers.isEmpty ? "—" : s.resolvers.joined(separator: ", "))
+            row("dns", s.resolvers.isEmpty ? "-" : s.resolvers.joined(separator: ", "))
             Divider().opacity(0.4)
             row("devices", "\(s.deviceCount) seen · \(s.listenerCount) listeners")
             if s.captivePortal {
@@ -102,7 +102,7 @@ struct MenuBarView: View {
                 .font(.system(size: 10))
                 .foregroundStyle(.secondary)
                 .frame(width: 52, alignment: .leading)
-            Text(v.isEmpty ? "—" : v)
+            Text(v.isEmpty ? "-" : v)
                 .font(.system(size: 10, design: .monospaced))
                 .lineLimit(1).truncationMode(.middle)
             Spacer(minLength: 0)

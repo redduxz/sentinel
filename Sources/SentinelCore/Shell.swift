@@ -1,6 +1,6 @@
 import Foundation
 
-/// Minimal shell-out helper — every watcher is just polling system tools.
+/// Minimal shell-out helper - every watcher is just polling system tools.
 public enum Sh {
     @discardableResult
     public static func run(_ cmd: String, _ args: [String] = [], timeout: TimeInterval = 8) -> String {

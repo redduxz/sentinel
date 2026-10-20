@@ -12,7 +12,7 @@ public final class ConnectionWatcher: Watcher, @unchecked Sendable {
     public init() {}
 
     public func poll() async -> Poll {
-        // established TCP + bound UDP — this machine's view of who's talking
+        // established TCP + bound UDP - this machine's view of who's talking
         let out = Sh.run("/usr/sbin/lsof",
                          ["-nP", "-iTCP", "-sTCP:ESTABLISHED,SYN_SENT", "-iUDP"])
         let current = Set(Parse.conns(out).filter { $0.node.contains("->") || $0.node.contains("*:") })

@@ -7,7 +7,7 @@ public protocol Watcher: Sendable {
     func poll() async -> Poll
 }
 
-/// Default watcher set — everything here works with zero root / zero entitlements.
+/// Default watcher set - everything here works with zero root / zero entitlements.
 public enum Watchers {
     public static func `default`() -> [any Watcher] {
         [WifiWatcher(), NetworkConfigWatcher(), ArpWatcher(), PortalWatcher(),
@@ -52,7 +52,7 @@ public final class WifiWatcher: Watcher, @unchecked Sendable {
             warnedOpen = true
             events.append(Event(kind: "wifi.open_network", severity: .warning,
                                 title: "open network",
-                                detail: "\"\(ssid)\" has no encryption — traffic is readable"))
+                                detail: "\"\(ssid)\" has no encryption - traffic is readable"))
         }
         if snap.bssid == nil && !notedBssidGated {
             notedBssidGated = true
@@ -106,7 +106,7 @@ public final class NetworkConfigWatcher: Watcher, @unchecked Sendable {
         if !lastResolvers.isEmpty, resolvers != lastResolvers, !resolvers.isEmpty {
             events.append(Event(kind: "dns.resolver_change", severity: .warning,
                                 title: "dns resolver changed",
-                                detail: "\(lastResolvers.joined(separator: ", ")) -> \(resolvers.joined(separator: ", ")) — possible DNS hijack on hostile networks"))
+                                detail: "\(lastResolvers.joined(separator: ", ")) -> \(resolvers.joined(separator: ", ")) - possible DNS hijack on hostile networks"))
         }
         if let gw = snap.gateway, let prev = lastGateway, gw != prev {
             events.append(Event(kind: "route.gateway_change", severity: .notice,
@@ -143,7 +143,7 @@ public final class ArpWatcher: Watcher, @unchecked Sendable {
            let prevMac = lastGatewayMac, let prevGw = lastGateway {
             if gw == prevGw, mac != prevMac {
                 events.append(Event(kind: "arp.gateway_flip", severity: .critical,
-                                    title: "gateway mac changed — possible arp spoof",
+                                    title: "gateway mac changed - possible arp spoof",
                                     detail: "\(gw): \(prevMac) -> \(mac)"))
             }
         }
@@ -181,7 +181,7 @@ public final class PortalWatcher: Watcher, @unchecked Sendable {
             if captive && !wasCaptive {
                 events.append(Event(kind: "net.captive_portal", severity: .warning,
                                     title: "captive portal / interception",
-                                    detail: "probe response was rewritten — login page or inline proxy ahead"))
+                                    detail: "probe response was rewritten - login page or inline proxy ahead"))
             }
             wasCaptive = captive
         } catch {
@@ -219,7 +219,7 @@ public final class DeviceWatcher: Watcher, @unchecked Sendable {
             } else if new.count > 1 {
                 events.append(Event(kind: "lan.new_devices", severity: .notice,
                                     title: "\(new.count) new devices joined",
-                                    detail: "busy segment — total \(macs.count) visible"))
+                                    detail: "busy segment - total \(macs.count) visible"))
             }
         } else {
             seeded = true

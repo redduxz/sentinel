@@ -1,6 +1,6 @@
 import Foundation
 
-/// Pure parsers for command output — kept side-effect free so tests can feed fixtures.
+/// Pure parsers for command output - kept side-effect free so tests can feed fixtures.
 public enum Parse {
 
     public struct Conn: Hashable, Sendable {
@@ -52,7 +52,7 @@ public enum Parse {
     public static func conns(_ out: String) -> [Conn] {
         out.split(separator: "\n").compactMap { line in
             let f = line.split(separator: " ", omittingEmptySubsequences: true)
-            // NAME is column 8 — a trailing "(STATE)" may follow it
+            // NAME is column 8 - a trailing "(STATE)" may follow it
             guard f.count >= 9, let pid = Int(f[1]) else { return nil }
             let node = String(f[8])
             return Conn(pid: pid, proc: String(f[0]), node: node)

@@ -13,7 +13,7 @@ public final class Monitor: ObservableObject {
     private var tasks: [Task<Void, Never>] = []
     private let maxEvents = 300
 
-    /// How far back status looks — a critical event clears after this window.
+    /// How far back status looks - a critical event clears after this window.
     private let statusWindows: [Severity: TimeInterval] = [
         .critical: 300, .warning: 600,
     ]
